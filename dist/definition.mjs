@@ -333,6 +333,12 @@ export const lstCollectionFields = [
                 datatype: "amount",
                 description: "total credit amount of all vouchers passed during the period from and to date, positive denotes credit and vice-a-versa",
             },
+            {
+                name: "RegisteredGSTIN",
+                datatype: "string",
+                expression: "if NOT $$IsEmpty:$PartyGSTIN then $PartyGSTIN else $$CollectionField:$GSTIN:1:LedGSTRegDetails",
+                description: "Active party GSTIN — the PartyGSTIN scalar when present, otherwise the GSTIN from the dated GST-registration sub-list (LedGSTRegDetails)",
+            },
             { name: "PartyGSTIN", datatype: "string", description: "GST registration number of the ledger party" },
         ],
     },
